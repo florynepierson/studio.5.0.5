@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio 505 | Esthétique · Tatouage · Piercing · Montpellier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-light: #fce8ee;
+    --pink-mid: #f4a7be;
+    --pink-deep: #e0637a;
+    --pink-dark: #c9385a;
+    --cream: #fdf6f0;
+    --charcoal: #2a2020;
+    --warm-grey: #7a6a6a;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ──────────────────── NAVBAR ──────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 68px;
+    background: rgba(253,246,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(228,160,180,0.25);
+    transition: box-shadow .3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 24px rgba(201,56,90,0.08); }
+
+  .nav-logo img {
+    height: 46px;
+    object-fit: contain;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    position: relative;
+    transition: color .3s;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1.5px;
+    background: var(--pink-deep);
+    transition: width .3s;
+  }
+  .nav-links a:hover { color: var(--pink-dark); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--pink-deep);
+    color: var(--white) !important;
+    padding: .45rem 1.1rem;
+    border-radius: 50px;
+    transition: background .3s, transform .2s !important;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--pink-dark) !important; transform: translateY(-1px); }
+
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .burger span { width: 24px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: .3s; }
+
+  @media(max-width: 860px) {
+    .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--cream); flex-direction: column; padding: 1.5rem 2rem; gap: 1.4rem; border-bottom: 1px solid var(--pink-mid); }
+    .nav-links.open { display: flex; }
+    .burger { display: flex; }
+  }
+
+  /* ──────────────────── HERO ──────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 30%, rgba(240,150,175,0.22) 0%, transparent 70%),
+      radial-gradient(circle at 85% 80%, rgba(244,167,190,0.18) 0%, transparent 50%),
+      var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    opacity: .55;
+  }
+  .hero-blob-1 { width: 420px; height: 420px; background: #f7c5d4; top: -80px; right: -100px; animation: float 8s ease-in-out infinite; }
+  .hero-blob-2 { width: 300px; height: 300px; background: #fce0e8; bottom: -60px; left: -60px; animation: float 10s ease-in-out infinite reverse; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+
+  .hero-logo {
+    width: min(340px, 75vw);
+    margin-bottom: 2rem;
+    animation: fadeUp .9s ease both;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: rgba(224,99,122,0.12);
+    border: 1px solid rgba(224,99,122,0.3);
+    border-radius: 50px;
+    padding: .35rem 1rem;
+    font-size: .75rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--pink-dark);
+    margin-bottom: 1.4rem;
+    animation: fadeUp .9s .15s ease both;
+  }
+
+  #hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.12;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 1.2rem;
+    animation: fadeUp .9s .25s ease both;
+  }
+  #hero h1 em { color: var(--pink-deep); font-style: italic; }
+
+  #hero p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.22rem;
+    color: var(--warm-grey);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.2rem;
+    animation: fadeUp .9s .35s ease both;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    justify-content: center;
+    margin-bottom: 2.4rem;
+    animation: fadeUp .9s .45s ease both;
+  }
+  .hero-tags span {
+    background: var(--white);
+    border: 1px solid var(--pink-mid);
+    border-radius: 50px;
+    padding: .3rem .9rem;
+    font-size: .78rem;
+    letter-spacing: .06em;
+    color: var(--warm-grey);
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--pink-deep);
+    color: var(--white);
+    text-decoration: none;
+    padding: .85rem 2.2rem;
+    border-radius: 50px;
+    font-size: .88rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    transition: background .3s, transform .2s, box-shadow .3s;
+    box-shadow: 0 8px 24px rgba(224,99,122,0.3);
+    animation: fadeUp .9s .55s ease both;
+  }
+  .btn-primary:hover { background: var(--pink-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(224,99,122,0.4); }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ──────────────────── SECTION BASE ──────────────────── */
+  section { padding: 6rem 2rem; }
+  .section-label {
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--pink-deep);
+    margin-bottom: .7rem;
+    font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    color: var(--charcoal);
+  }
+  .section-title em { color: var(--pink-deep); font-style: italic; }
+  .section-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.12rem;
+    color: var(--warm-grey);
+    line-height: 1.75;
+    max-width: 560px;
+  }
+  .container { max-width: 1140px; margin: 0 auto; }
+
+  /* ──────────────────── SALON PHOTO ──────────────────── */
+  #salon {
+    background: var(--white);
+    padding: 0;
+    overflow: hidden;
+  }
+  .salon-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .salon-img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    display: block;
+  }
+  .salon-text {
+    padding: 5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--pink-light);
+  }
+  .salon-text .section-sub { max-width: 100%; }
+  @media(max-width:768px) {
+    .salon-inner { grid-template-columns: 1fr; }
+    .salon-img { height: 320px; }
+    .salon-text { padding: 3rem 1.5rem; }
+  }
+
+  /* ──────────────────── ÉQUIPE ──────────────────── */
+  #equipe { background: var(--cream); }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .team-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(228,160,180,0.2);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .team-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(201,56,90,0.1); }
+  .team-avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--pink-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    margin: 0 auto 1.2rem;
+    border: 2px solid var(--pink-mid);
+  }
+  .team-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.08rem;
+    margin-bottom: .3rem;
+    color: var(--charcoal);
+  }
+  .team-card .role {
+    font-size: .78rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--pink-deep);
+    font-weight: 500;
+    margin-bottom: .6rem;
+  }
+  .team-card .handle {
+    font-size: .78rem;
+    color: var(--warm-grey);
+  }
+  .team-card .handle a { color: var(--pink-deep); text-decoration: none; }
+  .team-card .handle a:hover { text-decoration: underline; }
+
+  /* ──────────────────── PRESTATIONS ──────────────────── */
+  #prestations {
+    background: var(--white);
+  }
+  .presta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .presta-card {
+    border-radius: 20px;
+    border: 1px solid rgba(228,160,180,0.3);
+    overflow: hidden;
+    background: var(--cream);
+  }
+  .presta-header {
+    background: linear-gradient(135deg, var(--pink-light), rgba(244,167,190,0.3));
+    padding: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .presta-icon { font-size: 2rem; }
+  .presta-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--charcoal);
+  }
+  .presta-body { padding: 1.5rem 1.8rem; }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .6rem 0;
+    border-bottom: 1px solid rgba(228,160,180,0.2);
+    font-size: .9rem;
+  }
+  .price-row:last-child { border-bottom: none; }
+  .price-row .service-name { color: var(--charcoal); }
+  .price-row .price {
+    font-weight: 500;
+    color: var(--pink-dark);
+    font-size: .88rem;
+  }
+  .price-note {
+    margin-top: 1rem;
+    font-size: .75rem;
+    color: var(--warm-grey);
+    font-style: italic;
+  }
+
+  /* ──────────────────── GALERIE ──────────────────── */
+  #galerie { background: var(--pink-light); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .9rem;
+    margin-top: 3rem;
+  }
+  .gallery-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 14px;
+    cursor: pointer;
+    position: relative;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+  }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-item::after {
+    content: '🔍';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    background: rgba(201,56,90,0.2);
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .gallery-item:hover::after { opacity: 1; }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(20,10,15,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s;
+  }
+  .lightbox.active { opacity: 1; pointer-events: all; }
+  .lightbox img {
+    max-width: min(90vw, 780px);
+    max-height: 88vh;
+    border-radius: 16px;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  }
+  .lb-close {
+    position: absolute;
+    top: 1.5rem; right: 1.8rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #fff;
+    background: none;
+    border: none;
+    line-height: 1;
+  }
+  .lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    cursor: pointer;
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    width: 50px; height: 50px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .lb-nav:hover { background: rgba(255,255,255,0.22); }
+  .lb-prev { left: 1.2rem; }
+  .lb-next { right: 1.2rem; }
+
+  /* ──────────────────── RÉSERVATION ──────────────────── */
+  #reservation {
+    background: linear-gradient(160deg, var(--charcoal) 0%, #3d2030 100%);
+    color: var(--white);
+  }
+  #reservation .section-label { color: var(--pink-mid); }
+  #reservation .section-title { color: var(--white); }
+  #reservation .section-sub { color: rgba(255,255,255,0.65); }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+  .form-full { grid-column: 1/-1; }
+  .form-group label {
+    display: block;
+    font-size: .75rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--pink-mid);
+    margin-bottom: .5rem;
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(244,167,190,0.25);
+    border-radius: 12px;
+    padding: .85rem 1.1rem;
+    font-size: .92rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--white);
+    outline: none;
+    transition: border-color .3s, background .3s;
+  }
+  .form-group select option { background: var(--charcoal); }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--pink-mid);
+    background: rgba(255,255,255,0.11);
+  }
+  .form-group textarea { height: 120px; resize: vertical; }
+  .form-submit {
+    margin-top: 1.5rem;
+    background: var(--pink-deep);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: .92rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .3s, transform .2s;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: .04em;
+  }
+  .form-submit:hover { background: var(--pink-dark); transform: translateY(-1px); }
+  .form-note { font-size: .78rem; color: rgba(255,255,255,0.45); margin-top: .8rem; }
+  @media(max-width:600px) { .form-grid { grid-template-columns: 1fr; } }
+
+  /* ──────────────────── AVIS ──────────────────── */
+  #avis { background: var(--cream); }
+  .rating-hero {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+  }
+  .rating-score {
+    text-align: center;
+  }
+  .rating-score .score {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--charcoal);
+  }
+  .rating-score .stars { font-size: 1.4rem; letter-spacing: .1rem; color: #f0a500; margin: .2rem 0; }
+  .rating-score .count { font-size: .8rem; color: var(--warm-grey); }
+  .rating-bars { flex: 1; min-width: 200px; }
+  .rating-bar { display: flex; align-items: center; gap: .8rem; margin-bottom: .5rem; }
+  .rating-bar span { font-size: .82rem; color: var(--warm-grey); min-width: 30px; }
+  .bar-track { flex: 1; height: 7px; background: rgba(228,160,180,0.2); border-radius: 50px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--pink-deep); border-radius: 50px; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+  .review-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 1.6rem;
+    border: 1px solid rgba(228,160,180,0.15);
+    transition: transform .3s;
+  }
+  .review-card:hover { transform: translateY(-4px); }
+  .review-header { display: flex; align-items: center; gap: .9rem; margin-bottom: .9rem; }
+  .review-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--pink-light);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600;
+    font-size: .9rem;
+    color: var(--pink-dark);
+    flex-shrink: 0;
+  }
+  .review-name { font-weight: 500; font-size: .92rem; }
+  .review-date { font-size: .75rem; color: var(--warm-grey); margin-top: .15rem; }
+  .review-stars { font-size: .85rem; color: #f0a500; margin-bottom: .6rem; }
+  .review-text { font-size: .88rem; color: var(--warm-grey); line-height: 1.65; font-style: italic; }
+  .google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 2rem;
+    background: var(--white);
+    border: 1px solid rgba(228,160,180,0.25);
+    border-radius: 50px;
+    padding: .5rem 1.2rem;
+    font-size: .78rem;
+    color: var(--warm-grey);
+    text-decoration: none;
+  }
+
+  /* ──────────────────── HORAIRES + MAP ──────────────────── */
+  #infos { background: var(--white); }
+  .infos-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3.5rem;
+  }
+  @media(max-width:768px) { .infos-inner { grid-template-columns: 1fr; } }
+
+  .hours-table { width: 100%; border-collapse: collapse; }
+  .hours-table tr { border-bottom: 1px solid rgba(228,160,180,0.15); }
+  .hours-table tr:last-child { border-bottom: none; }
+  .hours-table td { padding: .75rem 0; font-size: .9rem; }
+  .hours-table td:last-child { text-align: right; color: var(--warm-grey); }
+  .hours-table .today { background: rgba(224,99,122,0.06); }
+  .hours-table .today td:first-child { color: var(--pink-dark); font-weight: 600; }
+
+  .map-wrap { border-radius: 20px; overflow: hidden; border: 1px solid rgba(228,160,180,0.25); }
+  .map-wrap iframe { display: block; width: 100%; height: 380px; border: none; }
+
+  /* ──────────────────── FLOATING SOCIAL ──────────────────── */
+  .float-social {
+    position: fixed;
+    right: 1.4rem;
+    bottom: 5.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    z-index: 999;
+  }
+  .float-btn {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .float-btn:hover { transform: scale(1.12); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+  .float-insta { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+  .float-tiktok { background: #010101; }
+
+  /* ──────────────────── FOOTER ──────────────────── */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.7);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+  }
+  footer .footer-logo { width: 120px; margin-bottom: 1.2rem; opacity: .85; }
+  footer .footer-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  footer .footer-links a { color: rgba(255,255,255,0.55); font-size: .8rem; text-decoration: none; letter-spacing: .06em; transition: color .2s; }
+  footer .footer-links a:hover { color: var(--pink-mid); }
+  footer .footer-copy { font-size: .75rem; color: rgba(255,255,255,0.3); }
+  footer .footer-copy a { color: var(--pink-mid); text-decoration: none; }
+  .lgbtq { display: inline-flex; align-items: center; gap: .4rem; margin-top: .6rem; font-size: .78rem; color: rgba(255,255,255,0.5); }
+
+  /* Modal mentions légales */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background: rgba(20,10,15,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+    padding: 1rem;
+  }
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+  .modal-box {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform .3s;
+  }
+  .modal-overlay.active .modal-box { transform: translateY(0); }
+  .modal-box h2 { font-family: 'Playfair Display', serif; margin-bottom: 1rem; font-size: 1.5rem; }
+  .modal-box p, .modal-box li { font-size: .88rem; color: var(--warm-grey); line-height: 1.7; margin-bottom: .7rem; }
+  .modal-close {
+    position: absolute;
+    top: 1rem; right: 1.2rem;
+    background: none; border: none;
+    font-size: 1.5rem; cursor: pointer;
+    color: var(--warm-grey);
+  }
+
+  /* ──────────────────── RESPONSIVE ──────────────────── */
+  @media(max-width:600px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .rating-hero { gap: 1rem; }
+    .presta-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s, transform .7s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <img src="images/logo.jpg" alt="Studio 505">
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#equipe">L'équipe</a></li>
+    <li><a href="#prestations">Prestations</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#infos">Horaires</a></li>
+    <li><a href="#reservation" class="nav-cta">Réserver</a></li>
+  </ul>
+  <div class="burger" id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <img src="images/logo.jpg" alt="Studio 505" class="hero-logo">
+  <span class="hero-badge">🎀 Studio privé · Montpellier</span>
+  <h1>Ton univers <em>beauté</em><br>& tatouage</h1>
+  <p>Un espace doux et bienveillant pour prendre soin de toi — esthétique, tatouage, piercing et bien plus encore.</p>
+  <div class="hero-tags">
+    <span>💅 Ongles</span>
+    <span>🖋 Tatouage</span>
+    <span>💎 Piercing</span>
+    <span>✨ Soins</span>
+    <span>👁 Cils & Sourcils</span>
+    <span>🏫 Formations</span>
+  </div>
+  <a href="#reservation" class="btn-primary">Prendre rendez-vous</a>
+</section>
+
+<!-- ═══════════════ SALON PHOTO ═══════════════ -->
+<div id="salon">
+  <div class="salon-inner">
+    <img src="images/salon.jpg" alt="Le salon Studio 505" class="salon-img" draggable="false" oncontextmenu="return false;">
+    <div class="salon-text">
+      <p class="section-label">Notre espace</p>
+      <h2 class="section-title">Ta <em>safe place</em> préférée</h2>
+      <p class="section-sub" style="margin-top:.8rem;">Studio 505 est un salon privé niché à Montpellier, conçu comme un cocon. Un endroit où tu te sens libre d'être toi·e-même, accompagné·e par des artistes passionné·e·s dans une ambiance rose, douce et chaleureuse.<br><br>✦ LGBTQ+ friendly · Espace inclusif · Accueil bienveillant</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ÉQUIPE ═══════════════ -->
+<section id="equipe">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Nos artistes</p>
+      <h2 class="section-title">L'<em>équipe</em></h2>
+      <p class="section-sub">Des expertes passionnées, chacune spécialisée dans son art, réunies sous le même toit pour sublimer chaque client·e.</p>
+    </div>
+    <div class="team-grid reveal">
+
+      <div class="team-card">
+        <div class="team-avatar">💅</div>
+        <h3>Sakura</h3>
+        <p class="role">Nail Artist</p>
+        <p class="handle"><a href="https://www.instagram.com/sakurabeautyacademy/" target="_blank">@sakurabeautyacademy</a></p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">👁</div>
+        <h3>Sakura</h3>
+        <p class="role">Brow Artist</p>
+        <p class="handle"><a href="https://www.instagram.com/browbysakura/" target="_blank">@browbysakura</a></p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">✨</div>
+        <h3>Bylo</h3>
+        <p class="role">Lash Artist</p>
+        <p class="handle"><a href="https://www.instagram.com/quality_bylo/" target="_blank">@quality_bylo</a></p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">🖋</div>
+        <h3>Enfant d'Ivoire</h3>
+        <p class="role">Tattoo Artist</p>
+        <p class="handle"><a href="https://www.instagram.com/enfantdivoire_tattoo/" target="_blank">@enfantdivoire_tattoo</a></p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">🖋</div>
+        <h3>Dr. Lulu</h3>
+        <p class="role">Tattoo Artist</p>
+        <p class="handle"><a href="https://www.instagram.com/dr.lulu/" target="_blank">@dr.lulu</a></p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">🖋</div>
+        <h3>Heaven Only Knows</h3>
+        <p class="role">Tattoo Artist</p>
+        <p class="handle"><a href="https://www.instagram.com/heavenonlyknows/" target="_blank">@heavenonlyknows</a></p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">🖋</div>
+        <h3>Fanight</h3>
+        <p class="role">Tattoo Artist</p>
+        <p class="handle"><a href="https://www.instagram.com/fanight.ttt/" target="_blank">@fanight.ttt</a></p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">🌿</div>
+        <h3>Joy</h3>
+        <p class="role">Facialist</p>
+        <p class="handle"><a href="https://www.instagram.com/joy.thefacialist/" target="_blank">@joy.thefacialist</a></p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">💆</div>
+        <h3>Chloé</h3>
+        <p class="role">Massage</p>
+        <p class="handle"><a href="https://www.instagram.com/chloetribotte/" target="_blank">@chloetribotte</a></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRESTATIONS ═══════════════ -->
+<section id="prestations">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Ce qu'on propose</p>
+      <h2 class="section-title">Nos <em>prestations</em></h2>
+      <p class="section-sub">Une offre complète de beauté & body art dans un cadre intime et luxuriant.</p>
+    </div>
+    <div class="presta-grid reveal">
+
+      <div class="presta-card">
+        <div class="presta-header">
+          <div class="presta-icon">💅</div>
+          <h3>Manucure & Ongles</h3>
+        </div>
+        <div class="presta-body">
+          <div class="price-row"><span class="service-name">Manucure simple</span><span class="price">À partir de 30€</span></div>
+          <div class="price-row"><span class="service-name">Pose gel / résine</span><span class="price">À partir de 55€</span></div>
+          <div class="price-row"><span class="service-name">Nail art (sur devis)</span><span class="price">Sur devis</span></div>
+          <div class="price-row"><span class="service-name">Remplissage</span><span class="price">À partir de 40€</span></div>
+          <p class="price-note">* Prix indicatifs — contactez-nous pour un devis personnalisé</p>
+        </div>
+      </div>
+
+      <div class="presta-card">
+        <div class="presta-header">
+          <div class="presta-icon">🖋</div>
+          <h3>Tatouage</h3>
+        </div>
+        <div class="presta-body">
+          <div class="price-row"><span class="service-name">Petit tatouage</span><span class="price">À partir de 80€</span></div>
+          <div class="price-row"><span class="service-name">Moyen format</span><span class="price">À partir de 150€</span></div>
+          <div class="price-row"><span class="service-name">Grand format / backpiece</span><span class="price">Sur devis</span></div>
+          <div class="price-row"><span class="service-name">Flash du jour</span><span class="price">À partir de 60€</span></div>
+          <p class="price-note">* Chaque artiste fixe ses propres tarifs — envoyez votre projet en DM</p>
+        </div>
+      </div>
+
+      <div class="presta-card">
+        <div class="presta-header">
+          <div class="presta-icon">💎</div>
+          <h3>Piercing</h3>
+        </div>
+        <div class="presta-body">
+          <div class="price-row"><span class="service-name">Piercing standard</span><span class="price">À partir de 40€</span></div>
+          <div class="price-row"><span class="service-name">Piercing cartilage</span><span class="price">À partir de 50€</span></div>
+          <div class="price-row"><span class="service-name">Gem dentaire</span><span class="price">À partir de 30€</span></div>
+          <p class="price-note">* Bijou inclus — tarifs variables selon le type de piercing</p>
+        </div>
+      </div>
+
+      <div class="presta-card">
+        <div class="presta-header">
+          <div class="presta-icon">👁</div>
+          <h3>Cils & Sourcils</h3>
+        </div>
+        <div class="presta-body">
+          <div class="price-row"><span class="service-name">Extension de cils</span><span class="price">À partir de 80€</span></div>
+          <div class="price-row"><span class="service-name">Rehaussement de cils</span><span class="price">À partir de 55€</span></div>
+          <div class="price-row"><span class="service-name">Lamination sourcils</span><span class="price">À partir de 45€</span></div>
+          <div class="price-row"><span class="service-name">Design sourcils</span><span class="price">À partir de 35€</span></div>
+        </div>
+      </div>
+
+      <div class="presta-card">
+        <div class="presta-header">
+          <div class="presta-icon">🌿</div>
+          <h3>Soins & Massages</h3>
+        </div>
+        <div class="presta-body">
+          <div class="price-row"><span class="service-name">Soin du visage</span><span class="price">À partir de 70€</span></div>
+          <div class="price-row"><span class="service-name">LED / Photobiomodulation</span><span class="price">À partir de 50€</span></div>
+          <div class="price-row"><span class="service-name">Massage relaxant</span><span class="price">À partir de 60€</span></div>
+          <div class="price-row"><span class="service-name">Soin corps</span><span class="price">À partir de 65€</span></div>
+        </div>
+      </div>
+
+      <div class="presta-card">
+        <div class="presta-header">
+          <div class="presta-icon">🏫</div>
+          <h3>Formations</h3>
+        </div>
+        <div class="presta-body">
+          <div class="price-row"><span class="service-name">Formation ongles</span><span class="price">Sur devis</span></div>
+          <div class="price-row"><span class="service-name">Formation cils</span><span class="price">Sur devis</span></div>
+          <div class="price-row"><span class="service-name">Formation sourcils</span><span class="price">Sur devis</span></div>
+          <p class="price-note">* Formations dispensées par nos expertes certifiées — renseignez-vous en DM</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GALERIE ═══════════════ -->
+<section id="galerie">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Notre travail</p>
+      <h2 class="section-title">La <em>galerie</em></h2>
+      <p class="section-sub">Quelques réalisations de nos artistes — chaque œuvre est unique, comme toi.</p>
+    </div>
+    <div class="gallery-grid reveal" id="galleryGrid">
+      <div class="gallery-item" onclick="openLightbox(0)"><img src="images/tattoo_cat.jpg" alt="Tatouage chat fleurs" draggable="false" oncontextmenu="return false;"></div>
+      <div class="gallery-item" onclick="openLightbox(1)"><img src="images/tattoo_tulipes.jpg" alt="Tatouage tulipes" draggable="false" oncontextmenu="return false;"></div>
+      <div class="gallery-item" onclick="openLightbox(2)"><img src="images/tattoo_back.jpg" alt="Tatouage dos" draggable="false" oncontextmenu="return false;"></div>
+      <div class="gallery-item" onclick="openLightbox(3)"><img src="images/tattoo_manga.jpg" alt="Tatouage manga" draggable="false" oncontextmenu="return false;"></div>
+      <div class="gallery-item" onclick="openLightbox(4)"><img src="images/tattoo_star.jpg" alt="Tatouage étoile" draggable="false" oncontextmenu="return false;"></div>
+      <div class="gallery-item" onclick="openLightbox(5)"><img src="images/tattoo_doll.jpg" alt="Tatouage poupée" draggable="false" oncontextmenu="return false;"></div>
+      <div class="gallery-item" onclick="openLightbox(6)"><img src="images/tattoo_mirror.jpg" alt="Tatouage miroir" draggable="false" oncontextmenu="return false;"></div>
+      <div class="gallery-item" onclick="openLightbox(7)"><img src="images/tattoo_belly.jpg" alt="Tatouage ventre" draggable="false" oncontextmenu="return false;"></div>
+      <div class="gallery-item" onclick="openLightbox(8)"><img src="images/brows.jpg" alt="Sourcils" draggable="false" oncontextmenu="return false;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+  <img id="lbImg" src="" alt="" draggable="false" oncontextmenu="return false;">
+  <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+</div>
+
+<!-- ═══════════════ RÉSERVATION ═══════════════ -->
+<section id="reservation">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">On t'attend ✨</p>
+      <h2 class="section-title" style="color:#fff;">Prendre <em>rendez-vous</em></h2>
+      <p class="section-sub">Remplis ce formulaire et on revient vers toi rapidement pour confirmer ta réservation.</p>
+    </div>
+    <form class="form-grid reveal" onsubmit="submitForm(event)">
+      <div class="form-group">
+        <label>Prénom & Nom</label>
+        <input type="text" name="name" placeholder="Marie Dupont" required>
+      </div>
+      <div class="form-group">
+        <label>Téléphone</label>
+        <input type="tel" name="phone" placeholder="+33 6 XX XX XX XX" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="marie@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Prestation souhaitée</label>
+        <select name="service" required>
+          <option value="">— Choisir —</option>
+          <option>Manucure / Ongles</option>
+          <option>Tatouage</option>
+          <option>Piercing</option>
+          <option>Cils</option>
+          <option>Sourcils</option>
+          <option>Soin visage</option>
+          <option>Massage</option>
+          <option>Gem dentaire</option>
+          <option>Formation</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Artiste souhaité·e (optionnel)</label>
+        <select name="artist">
+          <option value="">— Pas de préférence —</option>
+          <option>Sakura (ongles)</option>
+          <option>Sakura (sourcils)</option>
+          <option>Bylo (cils)</option>
+          <option>Enfant d'Ivoire (tattoo)</option>
+          <option>Dr. Lulu (tattoo)</option>
+          <option>Heaven Only Knows (tattoo)</option>
+          <option>Fanight (tattoo)</option>
+          <option>Joy (soins)</option>
+          <option>Chloé (massage)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Date souhaitée</label>
+        <input type="date" name="date">
+      </div>
+      <div class="form-group form-full">
+        <label>Message / description de votre projet</label>
+        <textarea name="message" placeholder="Décris ton projet ici — style, taille, référence, etc."></textarea>
+      </div>
+      <div class="form-full">
+        <button type="submit" class="form-submit">Envoyer ma demande 💌</button>
+        <p class="form-note">On vous répond sous 48h via Instagram ou par email.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════════ AVIS GOOGLE ═══════════════ -->
+<section id="avis">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Ce qu'ils disent</p>
+      <h2 class="section-title">Les <em>avis</em></h2>
+    </div>
+    <div class="rating-hero reveal">
+      <div class="rating-score">
+        <div class="score">4.9</div>
+        <div class="stars">★★★★★</div>
+        <div class="count">Basé sur les avis Google</div>
+      </div>
+      <div class="rating-bars">
+        <div class="rating-bar"><span>5 ★</span><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div></div>
+        <div class="rating-bar"><span>4 ★</span><div class="bar-track"><div class="bar-fill" style="width:6%"></div></div></div>
+        <div class="rating-bar"><span>3 ★</span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div></div>
+        <div class="rating-bar"><span>2 ★</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div></div>
+        <div class="rating-bar"><span>1 ★</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div></div>
+      </div>
+    </div>
+
+    <div class="reviews-grid reveal">
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">L</div>
+          <div><div class="review-name">Léa M.</div><div class="review-date">Il y a 2 semaines</div></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">« Une expérience incroyable du début à la fin. L'équipe est ultra professionnelle et le cadre est magnifique. Je reviendrai sans hésiter ! »</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">S</div>
+          <div><div class="review-name">Sophie R.</div><div class="review-date">Il y a 1 mois</div></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">« Mon tatouage est exactement comme je l'imaginais. L'artiste a pris le temps d'écouter mes envies et le résultat est bluffant. »</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">C</div>
+          <div><div class="review-name">Camille T.</div><div class="review-date">Il y a 3 semaines</div></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">« Le salon est tellement cozy et bienveillant. J'ai adoré mon soin visage avec Joy, je me suis sentie vraiment chouchoutée. »</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">A</div>
+          <div><div class="review-name">Anaïs B.</div><div class="review-date">Il y a 2 mois</div></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">« Mes ongles sont sublimes, Sakura est une vraie artiste. L'ambiance du studio est tellement chaleureuse, on s'y sent comme chez soi. »</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">M</div>
+          <div><div class="review-name">Margot L.</div><div class="review-date">Il y a 1 mois</div></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">« Super accueil, LGBTQ+ friendly comme annoncé. Je me suis sentie parfaitement à l'aise. Mes cils sont magnifiques ! »</p>
+      </div>
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">J</div>
+          <div><div class="review-name">Julie F.</div><div class="review-date">Il y a 5 jours</div></div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">« Le cadre est adorable, l'équipe à l'écoute et les résultats top. Je recommande à 100% Studio 505 à toutes mes amies ! »</p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="https://www.google.com/maps/place/Studio+505" target="_blank" class="google-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Voir tous les avis sur Google
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ HORAIRES + MAP ═══════════════ -->
+<section id="infos">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Nous trouver</p>
+      <h2 class="section-title">Horaires & <em>Accès</em></h2>
+    </div>
+    <div class="infos-inner reveal">
+      <div>
+        <p style="color:var(--warm-grey); margin-bottom:1.5rem; font-size:.9rem;">📍 33 Allée de l'Attique, 34000 Montpellier</p>
+        <table class="hours-table">
+          <tr><td>Lundi</td><td>09:00 – 20:00</td></tr>
+          <tr><td>Mardi</td><td>09:00 – 20:00</td></tr>
+          <tr><td>Mercredi</td><td>09:30 – 20:00</td></tr>
+          <tr><td>Jeudi</td><td>09:00 – 20:00</td></tr>
+          <tr><td>Vendredi</td><td>09:00 – 20:00</td></tr>
+          <tr><td>Samedi</td><td>09:00 – 20:00</td></tr>
+          <tr><td>Dimanche</td><td>09:00 – 20:00</td></tr>
+        </table>
+        <p style="font-size:.75rem; color:var(--warm-grey); margin-top:1rem; font-style:italic;">* Les horaires peuvent être modifiés lors des jours fériés.</p>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.955704080104!2d3.8899627!3d43.6074639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6af5616ec2057%3A0xef767541494a53ca!2sStudio%20505%20%7C%20studio%20priv%C3%A9%20esth%C3%A9tique%2C%20tatouage%20%26%20piercing!5e0!3m2!1sfr!2sfr!4v1777301265783!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FLOATING SOCIAL ═══════════════ -->
+<div class="float-social">
+  <a href="https://www.instagram.com/studio.5.0.5/" target="_blank" class="float-btn float-insta" title="Instagram">
+    <svg width="22" height="22" fill="#fff" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  </a>
+  <a href="https://www.tiktok.com/@studio.5.0.5" target="_blank" class="float-btn float-tiktok" title="TikTok">
+    <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.52V6.75a4.85 4.85 0 01-1.03-.06z"/></svg>
+  </a>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <img src="images/logo.jpg" alt="Studio 505" class="footer-logo" draggable="false" oncontextmenu="return false;">
+  <div class="footer-links">
+    <a href="#equipe">L'équipe</a>
+    <a href="#prestations">Prestations</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#avis">Avis</a>
+    <a href="#infos">Horaires</a>
+    <a href="#reservation">Réserver</a>
+    <a href="#" onclick="openModal(); return false;">Mentions légales</a>
+  </div>
+  <p class="footer-copy">© 2025 Studio 505 · 33 Allée de l'Attique, 34000 Montpellier · <a href="mailto:contact@studio505.fr">contact@studio505.fr</a></p>
+  <p class="lgbtq">🏳️‍🌈 Espace inclusif & LGBTQ+ friendly</p>
+</footer>
+
+<!-- ═══════════════ MODAL MENTIONS LÉGALES ═══════════════ -->
+<div class="modal-overlay" id="mentionsModal" onclick="closeModalOnBg(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h2>Mentions légales</h2>
+    <p><strong>Éditeur du site</strong><br>Studio 505<br>33 Allée de l'Attique, 34000 Montpellier<br>Instagram : @studio.5.0.5</p>
+    <p><strong>Activité</strong><br>Studio privé esthétique, tatouage & piercing. Prestataires indépendants réunis au sein du Studio 505.</p>
+    <p><strong>Propriété intellectuelle</strong><br>L'ensemble des contenus présents sur ce site (textes, images, photographies, réalisations) sont la propriété exclusive de Studio 505 et des artistes associé·e·s. Toute reproduction, même partielle, est strictement interdite sans autorisation préalable.</p>
+    <p><strong>Données personnelles</strong><br>Les informations collectées via le formulaire de contact sont utilisées uniquement pour la prise de rendez-vous. Elles ne sont ni cédées ni revendues à des tiers. Conformément au RGPD, vous disposez d'un droit d'accès, de modification et de suppression de vos données.</p>
+    <p><strong>Cookies</strong><br>Ce site n'utilise pas de cookies de traçage.</p>
+    <p><strong>Hébergement</strong><br>Ce site est hébergé par un prestataire tiers.</p>
+    <p><strong>Contact</strong><br>Pour toute question : contactez-nous via Instagram @studio.5.0.5</p>
+  </div>
+</div>
+
+<script>
+  // ─── NAV ───
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', scrollY > 40);
+  });
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  // ─── LIGHTBOX ───
+  const galleryImages = [
+    {src:'images/tattoo_cat.jpg', alt:'Tatouage chat fleurs'},
+    {src:'images/tattoo_tulipes.jpg', alt:'Tatouage tulipes'},
+    {src:'images/tattoo_back.jpg', alt:'Tatouage dos'},
+    {src:'images/tattoo_manga.jpg', alt:'Tatouage manga'},
+    {src:'images/tattoo_star.jpg', alt:'Tatouage étoile'},
+    {src:'images/tattoo_doll.jpg', alt:'Tatouage poupée'},
+    {src:'images/tattoo_mirror.jpg', alt:'Tatouage miroir'},
+    {src:'images/tattoo_belly.jpg', alt:'Tatouage ventre'},
+    {src:'images/brows.jpg', alt:'Sourcils'},
+  ];
+  let currentIdx = 0;
+
+  function openLightbox(idx) {
+    currentIdx = idx;
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lbImg');
+    img.src = galleryImages[idx].src;
+    img.alt = galleryImages[idx].alt;
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function closeLightboxOnBg(e) {
+    if(e.target === document.getElementById('lightbox')) closeLightbox();
+  }
+  function lbNav(dir) {
+    currentIdx = (currentIdx + dir + galleryImages.length) % galleryImages.length;
+    const img = document.getElementById('lbImg');
+    img.src = galleryImages[currentIdx].src;
+    img.alt = galleryImages[currentIdx].alt;
+  }
+  document.addEventListener('keydown', e => {
+    if(!document.getElementById('lightbox').classList.contains('active')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowLeft') lbNav(-1);
+    if(e.key === 'ArrowRight') lbNav(1);
+  });
+
+  // Disable right-click & drag on all gallery images
+  document.querySelectorAll('.gallery-item img, .salon-img, .footer-logo, .hero-logo').forEach(img => {
+    img.addEventListener('contextmenu', e => e.preventDefault());
+    img.addEventListener('dragstart', e => e.preventDefault());
+  });
+
+  // ─── FORM ───
+  function submitForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Demande envoyée !';
+    btn.style.background = '#4caf50';
+    btn.disabled = true;
+    setTimeout(() => { btn.textContent = 'Envoyer ma demande 💌'; btn.style.background = ''; btn.disabled = false; e.target.reset(); }, 4000);
+  }
+
+  // ─── MODAL ───
+  function openModal() { document.getElementById('mentionsModal').classList.add('active'); document.body.style.overflow='hidden'; }
+  function closeModal() { document.getElementById('mentionsModal').classList.remove('active'); document.body.style.overflow=''; }
+  function closeModalOnBg(e) { if(e.target===document.getElementById('mentionsModal')) closeModal(); }
+
+  // ─── SCROLL REVEAL ───
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
